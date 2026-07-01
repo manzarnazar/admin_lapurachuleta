@@ -1,5 +1,5 @@
 @php use App\Enums\ActiveInactiveStatusEnum; @endphp
-@extends('layouts.admin.app', ['page' => $menuSeller['delivery_zones']['active'] ?? ""])
+@extends('layouts.admin.app', ['page' => $menuAdmin['delivery_zones']['active'] ?? ""])
 
 @section('title', __('labels.delivery_zones'))
 @section('header_data')
@@ -110,6 +110,9 @@
                             @if(!empty($deliveryZone))
                                 <textarea class="d-none" id="existing-delivery-zone">{{$deliveryZone}}</textarea>
                             @endif
+                            <p class="text-muted small mb-2">
+                                {{ __('Use Hand to pan the map, Shape to click and draw your zone (minimum 3 points).') }}
+                            </p>
                             <div class="place-autocomplete-card" id="place-autocomplete-card">
                                 <p>Search for a place here:</p>
                             </div>
@@ -489,6 +492,10 @@
 
     #map #infowindow-content {
         display: inline;
+    }
+
+    .zone-drawing-toolbar .zone-drawing-tool:hover {
+        background-color: #f0f0f0;
     }
 </style>
 @push('script')
